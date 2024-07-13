@@ -1,0 +1,17 @@
+name: Issue Event
+on: 
+  issues:
+    types: [opened]
+jobs:
+  log-issue-event:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log issue event details
+        run: |
+          echo "Event Name: ${{ toJSON(github.event) }}"
+          echo "Event Name: ${{ toJSON(github.event_name) }}"
+          echo "Action: ${{ toJSON(github.event.action) }}"
+          echo "Issue Number: ${{ toJSON(github.event.issue.number) }}"
+          echo "Issue Title: ${{ toJSON(github.event.issue.title) }}"
+          echo "Issue Body: ${{ toJSON(github.event.issue.body) }}"
+          echo "Issue User Login: ${{ toJSON(github.event.issue.user.login) }}"
